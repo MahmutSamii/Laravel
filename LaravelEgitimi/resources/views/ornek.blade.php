@@ -5,6 +5,6 @@
     <title></title>
   </head>
   <body>
-    <p>Merhaba Sayın Öğrenci</p>
+    <p>Merhaba Sayın {{$ad}}</p>
   </body>
 </html>
