@@ -7,6 +7,7 @@ use App\Http\Controllers\Formislemleri;
 use App\Http\Controllers\Veritabaniislemleri;
 use App\Http\Controllers\Modelislemleri;
 use App\Http\Controllers\iletisim;
+use App\Http\Controllers\ResimYukle;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/upload', function () {
+    return view('upload');
+});
+Route::post('/resim-ilet',[ResimYukle::class,'resimYukleme'])->name('yukle');
 /*Route::get('/ornek',function (){
    return view('ornek');
 });*/
@@ -42,3 +47,28 @@ Route::get('/modelsil',[Modelislemleri::class,'sil']);
 
 Route::get('/iletisim',[iletisim::class,'index']);
 Route::post('/iletisim-sonuc',[iletisim::class,'ekleme'])->name('iletisim-sonuc');
+Route::get('/uye', function () {
+    return view('uyelik');
+});
+Route::post('/uye-kayit',[App\Http\Controllers\uyelikislemleri::class,'uyekayit'])->name('uyekayit');
+Route::get('/tema', function () {
+    return view('sayfalar.anasayfa');
+});
+Route::get('/galeri', function () {
+    return view('sayfalar.galeri');
+});
+Route::get('/hizmetler', function () {
+    return view('sayfalar.hizmetler');
+});
+
+Route::get('/resim',function (){
+  /*$img = Image::make('photo1.png')->resize(300,300);
+  $img->save('manzara.jpg');
+  return $img->response('jpg');*/
+
+  return view('resim');
+});
+
+Route::post('/yukle',function(){
+Image::make(request()->file('resim'))->resize(300, 200)->save('yeniresim.jpg');
+})->name('yukle');
