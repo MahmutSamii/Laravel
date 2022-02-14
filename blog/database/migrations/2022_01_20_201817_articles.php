@@ -17,10 +17,12 @@ class Articles extends Migration
             $table->id();
             $table->unsignedBiginteger('category_id');
             $table->string('title');
-            $table->string('image');
+            $table->string('images');
             $table->longText('content');
             $table->integer('hit')->default(0);
+            $table->integer('status')->default(0)->comment('0:pasif | 1:aktif');
             $table->string('slug');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('category_id')
