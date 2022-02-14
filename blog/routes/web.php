@@ -83,3 +83,7 @@ Route::get('/{category}/{slug}',[Homepage::class,'single'])->name('single');
 Route::get('/{sayfa}',[Homepage::class,'page'])->name('page');
 
 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
