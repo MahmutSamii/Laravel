@@ -8,6 +8,7 @@ use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Back\CategoryController;
 use App\Http\Controllers\Back\PageController;
 use App\Http\Controllers\Back\ConfigController;
+use App\Http\Controllers\Back\UserController;
 
 
 /*
@@ -33,6 +34,12 @@ Route::get('aktif-degil',function(){
 Route::prefix('admin')->name('admin.')->middleware('isLogin')->group(function(){
    Route::post('giris',[AuthController::class,'loginPost'])->name('login.post');
    Route::get('giris',[AuthController::class,'login'])->name('login');
+   Route::post('create/post',[AuthController::class,'createPost'])->name('create.post');
+   Route::get('create',[AuthController::class,'create'])->name('create');
+   Route::post('forgot-password',[AuthController::class,'sifreYenile'])->name('forgotPassword.post');
+   Route::get('forgot-password',[AuthController::class,'forgotPassword'])->name('forgotPassword');
+   Route::get('forgot-password-from-email/{id}',[AuthController::class,'resetPassword'])->name('forgotPassword.email');
+   Route::post('forgot-password-from-email/{id}',[AuthController::class,'resetPasswordPost'])->name('forgotPassword.email.post');
 });
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function(){
     Route::get('panel',[Dashboard::class,'index'])->name('dashboard');
@@ -63,6 +70,11 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function(){
     //Config's route
     Route::get('/ayarlar',[ConfigController::class,'index'])->name('config.index');
     Route::post('/ayarlar/update',[ConfigController::class,'update'])->name('config.update');
+    //Users Routes
+    Route::get('/users',[UserController::class,'index'])->name('users');
+    Route::get('/users/create',[UserController::class,'create'])->name('users.create');
+    Route::get('/users/sil/{id}',[UserController::class,'delete'])->name('users.delete');
+
     //
     Route::get('cikis',[AuthController::class,'logout'])->name('logout');
 });

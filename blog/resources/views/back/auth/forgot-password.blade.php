@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
 
@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Giriş | Blog Sitesi</title>
+    <title>Admin Giriş - Şifremi Unuttum</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('back/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -35,14 +35,17 @@
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Hoşgeldiniz</h1>
+                                    <h1 class="h4 text-gray-900 mb-2">Şifremi Unuttum?</h1>
+                                    <p class="mb-4">Şifrenizi Hatırlıyamıyor musunuz ? Hiç Sorun Değil E-mail Adresinizi Doğru Bir Şekilde
+                                    Girdiğinizden Emin Olun, E-mail Adresinize Şifre Yenileme Postası Gönderilicektir.
+                                    </p>
                                 </div>
                                 @if($errors->any())
-                                <div class="alert alert-danger">{{$errors->first()}}</div>
+                                    <div class="alert alert-danger">{{$errors->first()}}</div>
                                 @endif
                                 @if(Session::has('mesaj'))
 
@@ -51,41 +54,21 @@
                                     </div>
 
                                 @endif
-                                <form method="post" action="{{route('admin.login')}}" class="user">
+                                <form method="post" class="user" action="{{route('admin.forgotPassword')}}">
                                     @csrf
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user"
                                                id="exampleInputEmail" name="email" aria-describedby="emailHelp"
-                                               placeholder="Email Adresinizi Giriniz">
+                                               placeholder="Email Adresiniz...">
                                     </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control form-control-user"
-                                               id="exampleInputPassword" name="password" placeholder="Şifre">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck">
-                                            <label class="custom-control-label" for="customCheck">Beni Hatırla
-                                                </label>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">
-                                        Giriş
-                                    </button>
-                                    <hr>
-                                    <a href="index.html" class="btn btn-google btn-user btn-block">
-                                        <i class="fab fa-google fa-fw"></i> Google ile
-                                    </a>
-                                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                        <i class="fab fa-facebook-f fa-fw"></i>Facebook ile
-                                    </a>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">Gönder</button>
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="{{route('admin.forgotPassword')}}">Şifremi Unuttum?</a>
+                                    <a class="small" href="{{route('admin.create')}}">Yeni Bir Hesap Oluştur!</a>
                                 </div>
-                                <div class="text-center">
-                                    <a class="small" href="{{route('admin.create')}}">Yeni Bir Hesap Oluştur</a>
+                                <div class="text-center small">
+                                    Zaten Bir Hesabınız Var mı? <a href="{{route('admin.login')}}">Giriş Yap!</a>
                                 </div>
                             </div>
                         </div>
@@ -98,6 +81,7 @@
     </div>
 
 </div>
+
 
 <!-- Bootstrap core JavaScript-->
 <script src="{{asset('back/vendor/jquery/jquery.min.js')}}"></script>

@@ -224,9 +224,9 @@
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Settings
+                            <a class="dropdown-item" href="{{route('admin.users')}}">
+                                <i class="fas fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Kullanıcılar
                             </a>
                             <a class="dropdown-item" href="#">
                                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>

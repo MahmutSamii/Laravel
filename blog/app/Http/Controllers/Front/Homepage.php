@@ -75,7 +75,7 @@ class Homepage extends Controller
                       Gönderen Mail :'.$request->email.'<br>
                       Mesaj Konusu :'.$request->topic.'<br>
                       Mesaj :'.$request->message.'<br><br>
-                      Gelen Tarih : '.$request->now().'','text/html');
+                      Gelen Tarih : '.$request->date('Y').'','text/html');
           $message->subject($request->name.' iletişimden mesaj gönderdi');
       });
       /*$contact = new Contact;
